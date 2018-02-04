@@ -1,0 +1,29 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="container-fluid">
+    
+    <hr>
+    <p>
+      This is a datepicker-popup component demo<br>
+
+    </p>
+    <hr>
+
+    <form class="form-inline">
+        <div class="form-group">
+          <div class="input-group">
+              <!-- The input + popup -->
+              <label>With Datepicker: </label>
+              <datepicker-popup [(ngModel)]="dateValue" name="dateValue"></datepicker-popup>
+
+              <!-- A plain input component -->
+              <label>As plain string: </label>
+              <input class="form-control" placeholder="yyyy-mm-dd"
+              name="dateValue" [(ngModel)]="dateValue">
+          </div>
+        </div>
+    </form>
+
+</div>
+
+
