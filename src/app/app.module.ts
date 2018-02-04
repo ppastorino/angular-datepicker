@@ -21,12 +21,6 @@ import { DatePickerPopupComponent } from './datepicker-popup.component';
   ],
   providers: [],
   bootstrap: [AppComponent],
-  exports : [
-    FormsModule,
-    CommonModule,
-    NgbModule,
-    
-    DatePickerPopupComponent
-  ]
+  exports : []
 })
 export class AppModule { }

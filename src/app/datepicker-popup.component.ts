@@ -1,7 +1,5 @@
 import {Component, Input, forwardRef , ViewChild, ContentChild, OnInit, AfterViewInit, ElementRef} from '@angular/core';
 import {ControlValueAccessor , NG_VALUE_ACCESSOR } from '@angular/forms';
-import {FormControlName} from '@angular/forms';
-import {DatePipe} from '@angular/common';
 import {NgbDateParserFormatter, NgbDateStruct, NgbInputDatepicker} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -18,9 +16,8 @@ import {NgbDateParserFormatter, NgbDateStruct, NgbInputDatepicker} from '@ng-boo
 export class DatePickerPopupComponent implements ControlValueAccessor, AfterViewInit {
 
     @ViewChild('datepicker') datepicker: NgbInputDatepicker;
-    @ViewChild(FormControlName) formControlName: FormControlName;
 
-    constructor(private elm: ElementRef, public parserFormatter: NgbDateParserFormatter) {
+    constructor(public parserFormatter: NgbDateParserFormatter) {
     }
 
     ngAfterViewInit() {
@@ -38,10 +35,20 @@ export class DatePickerPopupComponent implements ControlValueAccessor, AfterView
         this.datepicker.registerOnTouched(fn);
     }
 
+    /**
+     * Converts from string to NgbDateStruct<br>
+     * You can inject another parserFormatter to change the date format.
+     * 
+     * @param value String value form component
+     */
     stringToNgbDateStruct(value : any) : NgbDateStruct{
         return this.parserFormatter.parse(value);
     }
 
+    /**
+     * Converts from NgbDateStruct to a String
+     * @param value NgbDateStruct from NgbInputDatepicker
+     */
     ngbDateStructToString(value : any) : String {
         return this.parserFormatter.format(value);
     }
